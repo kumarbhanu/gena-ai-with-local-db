@@ -26,14 +26,14 @@ def build_or_load_index(docs, index_path="models/faiss_index.pkl", embedding_mod
     if os.path.exists(index_path):
         return FAISS.load_local(index_path, OllamaEmbeddings(model=embedding_model), allow_dangerous_deserialization=True)
 
-    embedding = OllamaEmbeddings(model=embedding_model,server_url="https://eds-poc.streamlit.app/")
+    embedding = OllamaEmbeddings(model=embedding_model)
     vectordb = FAISS.from_documents(docs, embedding)
     vectordb.save_local(index_path)
     return vectordb
 
 # Function to initialize QA chain
 def initialize_qa_chain(vectordb, llm_model="gemma:2b"):
-    llm = Ollama(model=llm_model,server_url="https://eds-poc.streamlit.app/")
+    llm = Ollama(model=llm_model)
     template = """
 Use the following pieces of context to answer the question at the end.
 
