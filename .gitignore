@@ -1,0 +1,27 @@
+
+# Ignore the Anaconda virtual environment directory
+env/
+.venv/
+venv/
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore Jupyter Notebook checkpoints (if applicable)
+.ipynb_checkpoints/
+
+# Ignore Streamlit-specific files
+.streamlit/
+
+# Ignore logs or temporary files
+*.log
+*.tmp
+
+# Ignore editor-specific files
+.vscode/
+.idea/

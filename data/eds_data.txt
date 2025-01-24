@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EDS UI Library Example</title>
+  <style>
+    /* Buttons */
+    .eds-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-block;
+      background:red
+    }
+
+    .eds-btn-primary {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .eds-btn-secondary {
+      background-color: #6c757d;
+      color: white;
+    }
+
+    /* Containers */
+    .eds-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 15px;
+    }
+
+    .eds-container-fluid {
+      width: 100%;
+      padding: 15px;
+    }
+
+    /* Forms */
+    .eds-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .eds-input {
+      width: 100%;
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .eds-input-lg {
+      padding: 12px;
+      font-size: 16px;
+    }
+
+    .eds-input-sm {
+      padding: 6px;
+      font-size: 12px;
+    }
+
+    .eds-input-disabled {
+      background-color: #e9ecef;
+      cursor: not-allowed;
+    }
+
+    /* Tables */
+    .eds-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    .eds-table th,
+    .eds-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    .eds-table-striped tbody tr:nth-child(odd) {
+      background-color: #f9f9f9;
+    }
+
+    .eds-table-bordered {
+      border: 2px solid #ddd;
+    }
+
+    .eds-table-hover tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .eds-table-sm th,
+    .eds-table-sm td {
+      padding: 4px;
+    }
+
+    /* Cards */
+    .eds-card {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .eds-card-header,
+    .eds-card-footer {
+      background-color: #f7f7f7;
+      padding: 10px;
+      font-weight: bold;
+    }
+
+    .eds-card-body {
+      padding: 10px;
+    }
+
+    /* Modals */
+    .eds-modal {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 20px;
+      max-width: 500px;
+      margin: 50px auto;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .eds-modal-header,
+    .eds-modal-footer {
+      font-weight: bold;
+      padding: 10px 0;
+    }
+
+    .eds-modal-body {
+      padding: 10px 0;
+    }
+
+    /* Navigation */
+    .eds-nav {
+      display: flex;
+      gap: 10px;
+      background-color: #f8f9fa;
+      padding: 10px;
+    }
+
+    .eds-nav-item {
+      list-style: none;
+    }
+
+    .eds-nav-link {
+      color: #007bff;
+      text-decoration: none;
+      padding: 5px 10px;
+    }
+
+    .eds-nav-link:hover {
+      background-color: #e9ecef;
+      border-radius: 4px;
+    }
+
+    /* Alerts */
+    .eds-alert {
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    .eds-alert-success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .eds-alert-danger {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    /* Pagination */
+    .eds-pagination {
+      display: flex;
+      list-style: none;
+      gap: 5px;
+      padding: 0;
+    }
+
+    .eds-pagination-item {
+      display: inline-block;
+    }
+
+    .eds-pagination-link {
+      display: block;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .eds-pagination-link:hover {
+      background-color: #e9ecef;
+    }
+  </style>
+</head>
+<body>
+  <!-- Buttons -->
+  <button class="eds-btn eds-btn-primary">Primary Button</button>
+  <button class="eds-btn eds-btn-secondary">Secondary Button</button>
+
+  <!-- Containers -->
+  <div class="eds-container">Fixed-width content goes here.</div>
+  <div class="eds-container-fluid">Full-width content goes here.</div>
+
+  <!-- Forms -->
+  <div class="eds-form">
+    <label for="username">Username</label>
+    <input type="text" id="username" class="eds-input" placeholder="Enter your username">
+    <label for="password">Password</label>
+    <input type="password" id="password" class="eds-input" placeholder="Enter your password">
+    <button class="eds-btn eds-btn-primary">Login</button>
+  </div>
+
+  <!-- Tables -->
+  <table class="eds-table eds-table-striped eds-table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Country</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John Doe</td>
+        <td>28</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <td>Jane Smith</td>
+        <td>32</td>
+        <td>Canada</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Cards -->
+  <div class="eds-card">
+    <div class="eds-card-header">Card Header</div>
+    <div class="eds-card-body">This is the body of the card.</div>
+    <div class="eds-card-footer">Card Footer</div>
+  </div>
+
+  <!-- Modals -->
+  <div class="eds-modal">
+    <div class="eds-modal-header">Modal Header</div>
+    <div class="eds-modal-body">This is the modal body.</div>
+    <div class="eds-modal-footer">
+      <button class="eds-btn eds-btn-secondary">Close</button>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="eds-nav">
+    <a class="eds-nav-link eds-nav-item" href="#">Home</a>
+    <a class="eds-nav-link eds-nav-item" href="#">About</a>
+    <a class="eds-nav-link eds-nav-item" href="#">Services</a>
+    <a class="eds-nav-link eds-nav-item" href="#">Contact</a>
+  </nav>
+
+  <!-- Alerts -->
+  <div class="eds-alert eds-alert-success">This is a success alert!</div>
+  <div class="eds-alert eds-alert-danger">This is a danger alert!</div>
+
+  <!-- Pagination -->
+  <ul class="eds-pagination">
+    <li class="eds-pagination-item">
+      <a href="#" class="eds-pagination-link">&laquo;</a>
+    </li>
+    <li class="eds-pagination-item">
+      <a href="#" class="eds-pagination-link">1</a>
+    </li>
+    <li class="eds-pagination-item">
+      <a href="#" class="eds-pagination-link">2</a>
+    </li>
+    <li class="eds-pagination-item">
+      <a href="#" class="eds-pagination-link">&raquo;</a>
+    </li>
+  </ul>
+</body>
+</html>
