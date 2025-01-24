@@ -7,9 +7,12 @@ from langchain.embeddings import OllamaEmbeddings
 from langchain.llms import Ollama
 from langchain.prompts import PromptTemplate
 from langchain.chains import RetrievalQA
+from langchain_groq import ChatGroq
 import os
+from dotenv import load_dotenv
+load_dotenv()
 DATA_FILE = os.path.join(os.getcwd(), "data/eds_data.txt")
-
+groq_api_key=os.getenv('GROQ_API_KEY')
 # # File paths
 # DATA_FILE = "data/eds_data.txt"
 INDEX_FILE = "models/faiss_index.pkl"
@@ -32,8 +35,8 @@ def build_or_load_index(docs, index_path="models/faiss_index.pkl", embedding_mod
     return vectordb
 
 # Function to initialize QA chain
-def initialize_qa_chain(vectordb, llm_model="gemma:2b"):
-    llm = Ollama(model=llm_model)
+def initialize_qa_chain(vectordb, llm_model="Llama-3-Groq-70B-Tool-Use"):
+    llm = ChatGroq(model=llm_model, groq_api_key=groq_api_key)
     template = """
 Use the following pieces of context to answer the question at the end.
 

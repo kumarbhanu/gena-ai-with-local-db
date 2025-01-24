@@ -2,3 +2,5 @@ streamlit
 langchain
 faiss-cpu
 langchain-community
+langchain-groq
+python-dotenv
