@@ -12,10 +12,11 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 DATA_FILE = os.path.join(os.getcwd(), "data/eds_data.txt")
-groq_api_key=os.getenv('GROQ_API_KEY')
+# groq_api_key=os.getenv('GROQ_API_KEY')
 # # File paths
 # DATA_FILE = "data/eds_data.txt"
 INDEX_FILE = "models/faiss_index.pkl"
+groq_api_key = st.secrets["GROQ_API_KEY"]
 
 # Function to load and split data
 def load_and_split_data(file_path, chunk_size=1000, chunk_overlap=50):
