@@ -3,8 +3,7 @@ import os
 from langchain.document_loaders import TextLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
-from langchain.embeddings import OllamaEmbeddings
-from langchain.llms import Ollama
+from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.prompts import PromptTemplate
 from langchain.chains import RetrievalQA
 from langchain_groq import ChatGroq
@@ -12,9 +11,6 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 DATA_FILE = os.path.join(os.getcwd(), "data/eds_data.txt")
-# groq_api_key=os.getenv('GROQ_API_KEY')
-# # File paths
-# DATA_FILE = "data/eds_data.txt"
 INDEX_FILE = "models/faiss_index.pkl"
 groq_api_key = st.secrets["GROQ_API_KEY"]
 
@@ -28,17 +24,17 @@ def load_and_split_data(file_path, chunk_size=1000, chunk_overlap=50):
 # Function to build or load FAISS index
 def build_or_load_index(docs, index_path="models/faiss_index.pkl", embedding_model="gemma:2b"):
     if os.path.exists(index_path):
-        return FAISS.load_local(index_path, OllamaEmbeddings(model=embedding_model), allow_dangerous_deserialization=True)
+        return FAISS.load_local(index_path, HuggingFaceEmbeddings(model=embedding_model), allow_dangerous_deserialization=True)
 
-    embedding = OllamaEmbeddings(model=embedding_model)
+    embedding = HuggingFaceEmbeddings(model=embedding_model)
     vectordb = FAISS.from_documents(docs, embedding)
     vectordb.save_local(index_path)
     return vectordb
 
 # Function to initialize QA chain
 def initialize_qa_chain(vectordb, llm_model="Llama-3-Groq-70B-Tool-Use"):
-    llm = ChatGroq(model=llm_model, groq_api_key=groq_api_key)
-    chat = ChatGroq(temperature=0, groq_api_key="YOUR_API_KEY", model_name="mixtral-8x7b-32768")
+    llm = ChatGroq(temperature=0, groq_api_key="YOUR_API_KEY", model_name=llm_model)
+   
 
     template = """
 Use the following pieces of context to answer the question at the end.
