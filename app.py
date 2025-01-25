@@ -22,11 +22,8 @@ def load_and_split_data(file_path, chunk_size=1000, chunk_overlap=50):
     return text_splitter.split_documents(documents)
 
 # Function to build or load FAISS index
-def build_or_load_index(docs, index_path="models/faiss_index.pkl", embedding_model="gemma:2b"):
-    if os.path.exists(index_path):
-        return FAISS.load_local(index_path, HuggingFaceEmbeddings(model=embedding_model), allow_dangerous_deserialization=True)
-
-    embedding = HuggingFaceEmbeddings(model=embedding_model)
+def build_or_load_index(docs, index_path="models/faiss_index.pkl", embedding_model=""):
+    embedding = HuggingFaceEmbeddings(model="all-mpnet-base-v2")
     vectordb = FAISS.from_documents(docs, embedding)
     vectordb.save_local(index_path)
     return vectordb
