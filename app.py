@@ -23,14 +23,14 @@ def load_and_split_data(file_path, chunk_size=1000, chunk_overlap=50):
 
 # Function to build or load FAISS index
 def build_or_load_index(docs, index_path="models/faiss_index.pkl", embedding_model=""):
-    embedding = HuggingFaceEmbeddings(model="all-mpnet-base-v2")
+    embedding = HuggingFaceEmbeddings(model_name="all-mpnet-base-v2")
     vectordb = FAISS.from_documents(docs, embedding)
     vectordb.save_local(index_path)
     return vectordb
 
 # Function to initialize QA chain
 def initialize_qa_chain(vectordb, llm_model="Llama-3-Groq-70B-Tool-Use"):
-    llm = ChatGroq(temperature=0, groq_api_key="YOUR_API_KEY", model_name=llm_model)
+    llm = ChatGroq(temperature=0, groq_api_key=groq_api_key, model_name=llm_model)
    
 
     template = """
