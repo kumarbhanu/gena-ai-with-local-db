@@ -30,7 +30,7 @@ def build_or_load_index(docs, index_path="models/faiss_index.pkl", embedding_mod
 
 # Function to initialize QA chain
 def initialize_qa_chain(vectordb, llm_model="Llama-3-Groq-70B-Tool-Use"):
-    llm = ChatGroq(temperature=0, groq_api_key=groq_api_key, model_name=llm_model)
+    llm = ChatGroq(temperature=0, groq_api_key=groq_api_key, model_name="mixtral-8x7b-32768")
    
 
     template = """
